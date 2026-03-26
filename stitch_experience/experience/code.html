@@ -1,0 +1,310 @@
+<html class="dark" lang="zh-CN"><head></head><body class="bg-surface text-on-surface font-body selection:bg-secondary/30">
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>经历 - AICG Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#002c65",
+              "on-tertiary-container": "#f8f1ff",
+              "on-background": "#f9f5f8",
+              "outline": "#767577",
+              "error-dim": "#d7383b",
+              "surface-container": "#19191c",
+              "on-surface": "#f9f5f8",
+              "secondary-fixed-dim": "#1cd5ff",
+              "error": "#ff716c",
+              "secondary-container": "#00677e",
+              "primary-container": "#6c9fff",
+              "secondary-fixed": "#79dfff",
+              "inverse-surface": "#fcf8fb",
+              "primary-dim": "#0070eb",
+              "on-tertiary": "#290067",
+              "surface": "#0e0e10",
+              "surface-dim": "#0e0e10",
+              "primary": "#85adff",
+              "tertiary": "#ac89ff",
+              "outline-variant": "#48474a",
+              "tertiary-dim": "#874cff",
+              "on-primary-container": "#00214f",
+              "inverse-on-surface": "#565457",
+              "inverse-primary": "#005bc2",
+              "secondary": "#00d2fd",
+              "on-tertiary-fixed-variant": "#4700a7",
+              "on-surface-variant": "#adaaad",
+              "secondary-dim": "#00c3eb",
+              "on-secondary": "#004352",
+              "surface-container-high": "#1f1f22",
+              "surface-bright": "#2c2c2f",
+              "surface-container-low": "#131315",
+              "on-error": "#490006",
+              "on-secondary-fixed-variant": "#00586c",
+              "on-primary-fixed-variant": "#002a61",
+              "primary-fixed": "#6c9fff",
+              "on-secondary-fixed": "#003a47",
+              "surface-tint": "#85adff",
+              "on-primary-fixed": "#000000",
+              "tertiary-fixed": "#bda1ff",
+              "error-container": "#9f0519",
+              "on-error-container": "#ffa8a3",
+              "surface-container-highest": "#262528",
+              "background": "#0e0e10",
+              "on-secondary-container": "#eefaff",
+              "tertiary-fixed-dim": "#b190ff",
+              "tertiary-container": "#7000ff",
+              "surface-container-lowest": "#000000",
+              "surface-variant": "#262528",
+              "primary-fixed-dim": "#5191ff",
+              "on-tertiary-fixed": "#1f0052"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent 0%, #85adff 10%, #85adff 90%, transparent 100%);
+            transform-origin: top;
+            animation: lineStretch 1.5s ease-out 0.6s forwards;
+            transform: scaleY(0);
+        }
+        @keyframes lineStretch {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+        .glow-dot {
+            box-shadow: 0 0 15px 2px rgba(0, 210, 253, 0.4);
+        }
+        .dot-scale {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+            animation: dotAppear 0.5s ease-out forwards;
+        }
+        @keyframes dotAppear {
+            from { opacity: 0; transform: translateX(-50%) scale(0); }
+            to { opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpAnim 0.8s ease-out forwards;
+        }
+        @keyframes fadeUpAnim {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        
+        .content-right {
+            opacity: 0;
+            animation: moveRight 0.8s ease-out forwards;
+        }
+        .content-left {
+            opacity: 0;
+            animation: moveRight 0.8s ease-out forwards; /* mobile: moves right */
+        }
+        @media (min-width: 768px) {
+            .content-left {
+                animation-name: moveLeft; /* desktop: moves left */
+            }
+        }
+        
+        @keyframes moveLeft {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes moveRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .timeline-item-1 > div { animation-delay: 1.5s; }
+        .timeline-item-2 > div { animation-delay: 1.8s; }
+        .timeline-item-3 > div { animation-delay: 2.1s; }
+        .timeline-item-4 > div { animation-delay: 2.4s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-xl">
+<div class="flex justify-between items-center px-10 py-6 max-w-[1440px] mx-auto">
+<div class="text-xl font-bold tracking-tighter text-zinc-100 font-headline" style="">AICG Curator</div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="../about_me/code.html" style="">关于我</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-blue-400 border-b-2 border-blue-400 pb-1" href="code.html" style="">经历</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank" style="">作品集</a>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-on-surface" style="">menu</span>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-10 max-w-[1440px] mx-auto overflow-hidden">
+<!-- Hero Section -->
+<header class="mb-24 relative fade-up delay-1">
+<div class="absolute -top-20 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-6" style="">
+                PRO<span class="text-secondary italic" style="">/</span>FILE
+            </h1>
+<p class="font-body text-on-surface-variant text-lg max-w-2xl leading-relaxed fade-up delay-2" style="">记录从影视制作走向AIGC的探索之路。以镜头语言为骨骼，以算法生成为血肉，在物理法则与像素之间寻找新的视觉可能。</p>
+</header>
+<!-- Timeline Section -->
+<section class="relative">
+<!-- Central Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] timeline-line -translate-x-1/2 opacity-30"></div>
+<div class="space-y-32 relative">
+<!-- Entry 1: Current Experience -->
+<div class="relative flex flex-col md:flex-row items-start md:items-start timeline-item-1">
+<div class="hidden md:block w-1/2 pr-20 text-right pt-1 content-left">
+<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.09 — 2025.12</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">皇亚铝业科技有限公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AI设计师、AIGC制作</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary rounded-full glow-dot z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pl-12 md:pl-20 content-right">
+<div class="md:hidden mb-6">
+<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.09 — 2025.12</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">皇亚铝业科技有限公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AI设计师、AIGC制作</p>
+</div>
+<div class="max-w-xl">
+<ul class="space-y-2 text-on-surface-variant border-l border-outline-variant/30 pl-6">
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">1、综合运用文本、图像、视觉等多类型AI制作电商海报、漫剧及精品广告片，独立完成从创意构思、素材生成到后期剪辑调色的全流程交付。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">2、搭建标准化可复用的AIGC工作流，内容产出效率提升3倍以上。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">3、对接客户需求并输出AI视觉方案，协调设计与后期流程，保障项目按期交付。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">4、执行公司项目，从具体的内容构思、执行制作及后期精剪，独立完成制作。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">5、系统化管理公司的图片、视频资料库，确保素材的及时更新与高效调用。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">6、建立并整理内部AIGC教程库，定期发布AI前沿动态周报，辅助团队同步最新技术。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Entry 2: Past Work -->
+<div class="relative flex flex-col md:flex-row-reverse items-start md:items-start timeline-item-2">
+<div class="hidden md:block w-1/2 pl-20 text-left pt-1 content-right">
+<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.05 — 2025.09</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">芒芒喵影视传媒有限责任公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AI设计师、剧本策划</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-tertiary rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pr-0 md:pr-20 pl-12 md:pl-0 text-left md:text-right content-left">
+<div class="md:hidden mb-6">
+<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.05 — 2025.09</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">芒芒喵影视传媒有限责任公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AI设计师、剧本策划</p>
+</div>
+<div class="max-w-xl ml-auto">
+<ul class="space-y-2 text-on-surface-variant border-r-0 md:border-r border-outline-variant/30 pr-0 md:pr-6">
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">1、运用AIGC工具(即梦、Stable Diffusion、wan)制作电商海报、真人短剧海报、商业IP、漫剧等多品类AI视觉素材制作，积累从提示词控制到风格统一的全流程经验。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">2、负责叙事性短视频的脚本创作，涵盖创意构思、故事构建至分镜头设计。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">3、独立完成视频的现场拍摄、后期剪辑与调色工作，确保成片的质量和风格上满足导演要求。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Entry 3: Projects -->
+<div class="relative flex flex-col md:flex-row items-start md:items-start timeline-item-3">
+<div class="hidden md:block w-1/2 pr-20 text-right pt-1 content-left">
+<span class="font-headline text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2024.08 — 2025.05</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">短剧拍摄</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">摄像师、摄像助理</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pl-12 md:pl-20 content-right">
+<div class="md:hidden mb-6">
+<span class="font-headline text-primary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2024.08 — 2025.05</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">短剧拍摄</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">摄像师、摄像助理</p>
+</div>
+<div class="max-w-xl">
+<div class="space-y-4 text-on-surface-variant border-l border-outline-variant/30 pl-6">
+<p class="text-sm leading-relaxed" style="">参与多部真人短剧拍摄，担任摄像师（B、C机、摄像助理）。负责摄像、设计镜头与构图、指导演员与现场调度等。</p>
+<p class="text-sm leading-relaxed italic opacity-80" style="">曾参与《离婚后大佬妈咪在线打脸》、《一吻定情》、《闪婚后夫人她运气爆棚》、《傩仙归来》、《十年明月》等多部短剧拍摄。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Entry 4: Graduation -->
+<div class="relative flex flex-col md:flex-row-reverse items-start md:items-start timeline-item-4">
+<div class="hidden md:block w-1/2 pl-20 text-left pt-1 content-right">
+<span class="font-headline text-outline text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2020.09 — 2024.06</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">广州美术学院</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">影视摄影与制作</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-outline rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pr-0 md:pr-20 pl-12 md:pl-0 text-left md:text-right content-left">
+<div class="md:hidden mb-6">
+<span class="font-headline text-outline text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2020.09 — 2024.06</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">广州美术学院</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">影视摄影与制作</p>
+</div>
+<div class="max-w-xl ml-auto">
+<div class="font-body text-on-surface-variant leading-relaxed text-sm space-y-4 border-r-0 md:border-r border-outline-variant/30 pr-0 md:pr-6">
+<p class="" style="">专业优势：熟练掌握镜头语言、光影设计与叙事；具有深厚的视觉审美与构图基本功：从前期制作到后期合成，全流程制作经验。</p>
+<p class="font-headline font-semibold text-on-surface tracking-wide" style="">曾获奖项：毕业设计《啮合》入选英国Lift Off升空电影节。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-950 w-full py-12 border-t border-zinc-800/20">
+<div class="flex flex-col md:flex-row justify-end items-center px-10 gap-4 max-w-[1440px] mx-auto">
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs text-zinc-600 hover:text-blue-300 transition-colors opacity-80 hover:opacity-100" href="#" style="">LinkedIn</a>
+<a class="font-['Inter'] text-xs text-zinc-600 hover:text-blue-300 transition-colors opacity-80 hover:opacity-100" href="#" style="">GitHub</a>
+<a class="font-['Inter'] text-xs text-zinc-600 hover:text-blue-300 transition-colors opacity-80 hover:opacity-100" href="#" style="">Layers</a>
+</div>
+</div>
+</footer>
+</body></html>
