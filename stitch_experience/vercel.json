@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "stitch-experience",
+  "builds": [
+    { "src": "**/*.html", "use": "@vercel/static" },
+    { "src": "**/*.png", "use": "@vercel/static" },
+    { "src": "**/*.jpg", "use": "@vercel/static" }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
