@@ -100,6 +100,20 @@
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
         .delay-400 { animation-delay: 400ms; }
+        
+        /* 移动端菜单动画 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.menu-open {
+            max-height: 300px;
+            opacity: 1;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary-fixed">
@@ -111,9 +125,14 @@
 <a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="../experience/code.html" style="">经历</a>
 <a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank" style="">作品集</a>
 </div>
-<button class="md:hidden text-on-surface" style="">
+<button id="mobile-menu-btn" class="md:hidden text-on-surface" style="">
 <span class="material-symbols-outlined" style="">menu</span>
 </button>
+</div>
+<div id="mobile-menu" class="md:hidden bg-zinc-950/95 border-t border-white/5 flex flex-col px-10 gap-6 absolute w-full left-0 text-center">
+<a class="font-headline tracking-tight text-sm uppercase text-blue-400" href="code.html">关于我</a>
+<a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="../experience/code.html">经历</a>
+<a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank">作品集</a>
 </div>
 </nav>
 <main class="pt-32 pb-24 px-6 md:px-10 max-w-[1440px] mx-auto">
@@ -297,5 +316,10 @@
             animation: gradient 3s linear infinite;
         }
     </style>
-
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('menu-open');
+    });
+</script>
 </body></html>

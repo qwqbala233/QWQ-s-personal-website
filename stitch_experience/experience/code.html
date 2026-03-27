@@ -154,6 +154,20 @@
         .delay-200 { animation-delay: 200ms; }
         .delay-300 { animation-delay: 300ms; }
         .delay-400 { animation-delay: 400ms; }
+        
+        /* 移动端菜单动画 */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.menu-open {
+            max-height: 300px;
+            opacity: 1;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
     </style>
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-xl">
@@ -164,9 +178,14 @@
 <a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-blue-400 border-b-2 border-blue-400 pb-1" href="code.html" style="">经历</a>
 <a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank" style="">作品集</a>
 </div>
-<div class="md:hidden">
+<div id="mobile-menu-btn" class="md:hidden cursor-pointer">
 <span class="material-symbols-outlined text-on-surface" style="">menu</span>
 </div>
+</div>
+<div id="mobile-menu" class="md:hidden bg-zinc-950/95 border-t border-white/5 flex flex-col px-10 gap-6 absolute w-full left-0 text-center">
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="../about_me/code.html">关于我</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-blue-400" href="code.html">经历</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank">作品集</a>
 </div>
 </nav>
 <main class="pt-32 pb-24 px-6 md:px-10 max-w-[1440px] mx-auto overflow-hidden">
@@ -307,4 +326,10 @@
 </div>
 </div>
 </footer>
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('menu-open');
+    });
+</script>
 </body></html>
