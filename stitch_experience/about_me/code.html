@@ -167,11 +167,17 @@
             width: min(100%, 1440px);
             min-height: calc(100svh - 10.5rem);
             display: grid;
-            grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+            grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.72fr);
             align-items: end;
-            gap: clamp(2rem, 6vw, 8rem);
+            gap: clamp(2rem, 9vw, 12rem);
             z-index: 3;
             pointer-events: none;
+        }
+        .hero-main {
+            align-self: end;
+            display: grid;
+            justify-items: start;
+            margin-bottom: clamp(1.25rem, 5vh, 4rem);
         }
         .hero-kicker {
             display: inline-flex;
@@ -202,6 +208,11 @@
             text-shadow: 0 0 34px rgba(133,173,255,0.24);
         }
         .hero-subtitle {
+            display: block;
+            justify-self: start;
+            margin-left: 0.5ch;
+            padding-left: 0;
+            text-indent: 0;
             margin-top: 1.15rem;
             color: rgba(249,245,248,0.72);
             font-size: clamp(0.78rem, 1.15vw, 1.05rem);
@@ -209,26 +220,29 @@
             text-transform: uppercase;
         }
         .hero-side {
-            align-self: center;
+            align-self: end;
             justify-self: end;
-            max-width: 25rem;
+            width: min(100%, 31rem);
             display: grid;
-            gap: 1.5rem;
-            padding-top: 10vh;
+            gap: 1.15rem;
+            margin-bottom: clamp(0.2rem, 2.5vh, 2rem);
+            padding: 1.15rem 0 0 1.15rem;
+            border-left: 1px solid rgba(0, 210, 253, 0.34);
         }
         .hero-side p {
-            color: rgba(249,245,248,0.78);
-            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-            line-height: 1.85;
+            color: rgba(249,245,248,0.76);
+            font-size: clamp(0.86rem, 1vw, 0.98rem);
+            line-height: 1.78;
+            text-wrap: pretty;
         }
         .hero-meta {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.75rem;
+            gap: 0.65rem;
         }
         .hero-meta div {
             border-top: 1px solid rgba(255,255,255,0.16);
-            padding-top: 0.8rem;
+            padding-top: 0.65rem;
         }
         .hero-meta span {
             display: block;
@@ -239,41 +253,34 @@
         }
         .hero-meta strong {
             display: block;
-            margin-top: 0.38rem;
+            margin-top: 0.34rem;
             color: #f9f5f8;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 600;
+            line-height: 1.25;
         }
-        .hero-scroll-hint {
-            position: absolute;
-            left: 50%;
-            bottom: 2rem;
-            z-index: 4;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: rgba(249,245,248,0.58);
-            font-size: 0.65rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
+                .core-section {
+            padding-inline: 0.75rem;
         }
-        .hero-scroll-hint::before {
-            content: "";
-            width: 1px;
-            height: 2.8rem;
-            background: linear-gradient(to bottom, transparent, #00d2fd, transparent);
-            animation: scrollPulse 1.7s ease-in-out infinite;
+        .experience-section {
+            scroll-margin-top: 7rem;
+            padding-inline: 0.75rem;
         }
-        @keyframes gridDrift {
+        .experience-glow {
+            background: radial-gradient(circle, rgba(133, 173, 255, 0.13) 0%, rgba(133, 173, 255, 0.06) 36%, transparent 72%);
+            filter: blur(44px);
+            opacity: 0.72;
+        }
+        @media (min-width: 768px) {
+            .core-section { padding-inline: 1.25rem; }
+            .experience-section { padding-inline: 1.25rem; }
+        }
+
+@keyframes gridDrift {
             from { background-position: 0 0, 0 0; }
             to { background-position: 72px 72px, 72px 72px; }
         }
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 0.35; transform: translateY(-0.25rem); }
-            50% { opacity: 1; transform: translateY(0.25rem); }
-        }
-        @media (max-width: 900px) {
+@media (max-width: 900px) {
             .hero-scroll { min-height: 820vh; }
             .hero-stage { padding-top: 6.5rem; align-items: end; }
             .hero-video-shell {
@@ -289,21 +296,77 @@
             }
             .hero-title { font-size: clamp(2.35rem, 10vw, 4.7rem); max-width: 100%; }
             .hero-subtitle {
-            margin-top: 1.15rem;
-            color: rgba(249,245,248,0.72);
-            font-size: clamp(0.78rem, 1.15vw, 1.05rem);
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-        }
-        .hero-side {
+                font-size: clamp(0.78rem, 1.15vw, 1.05rem);
+                letter-spacing: 0.32em;
+            }
+            .hero-main { margin-bottom: 0; }
+            .hero-side {
                 justify-self: start;
                 align-self: end;
+                width: min(100%, 34rem);
                 max-width: 34rem;
-                padding-top: 0;
+                margin-bottom: 0;
+                padding: 0;
+                border-left: 0;
             }
             .hero-meta { grid-template-columns: 1fr; }
-            .hero-scroll-hint { left: 1.5rem; transform: none; }
+}
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent 0%, #85adff 10%, #85adff 90%, transparent 100%);
+            transform-origin: top;
+            animation: lineStretch 1.5s ease-out 0.6s forwards;
+            transform: scaleY(0);
         }
+        @keyframes lineStretch {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+        .glow-dot {
+            box-shadow: 0 0 15px 2px rgba(0, 210, 253, 0.4);
+        }
+        .dot-scale {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+            animation: dotAppear 0.5s ease-out forwards;
+        }
+        @keyframes dotAppear {
+            from { opacity: 0; transform: translateX(-50%) scale(0); }
+            to { opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpAnim 0.8s ease-out forwards;
+        }
+        @keyframes fadeUpAnim {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .content-right {
+            opacity: 0;
+            animation: moveRight 0.8s ease-out forwards;
+        }
+        .content-left {
+            opacity: 0;
+            animation: moveRight 0.8s ease-out forwards;
+        }
+        @media (min-width: 768px) {
+            .content-left { animation-name: moveLeft; }
+        }
+        @keyframes moveLeft {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes moveRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .timeline-item-1 > div { animation-delay: 1.5s; }
+        .timeline-item-2 > div { animation-delay: 1.8s; }
+        .timeline-item-3 > div { animation-delay: 2.1s; }
+        .timeline-item-4 > div { animation-delay: 2.4s; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -338,7 +401,7 @@
 <div class="text-xl font-bold tracking-tighter text-zinc-100 font-headline" style="">AICG Curator</div>
 <div class="hidden md:flex gap-12 items-center">
 <a class="font-headline tracking-tight text-sm uppercase text-blue-400 border-b-2 border-blue-400 pb-1" href="code.html" style="">关于我</a>
-<a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="../experience/code.html" style="">经历</a>
+<a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="#experience" style="">经历</a>
 <a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100 transition-colors" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank" style="">作品集</a>
 </div>
 <button id="mobile-menu-btn" class="md:hidden text-on-surface" style="">
@@ -347,7 +410,7 @@
 </div>
 <div id="mobile-menu" class="md:hidden bg-black/60 backdrop-blur-xl border-t border-white/10 flex flex-col px-10 gap-6 absolute w-full left-0 text-center">
 <a class="font-headline tracking-tight text-sm uppercase text-blue-400" href="code.html">关于我</a>
-<a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="../experience/code.html">经历</a>
+<a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="#experience">经历</a>
 <a class="font-headline tracking-tight text-sm uppercase text-zinc-400 hover:text-zinc-100" href="https://www.kdocs.cn/l/ckf2prFgFS5s" target="_blank">作品集</a>
 </div>
 </nav>
@@ -358,7 +421,7 @@
 <canvas id="hero-scroll-canvas" aria-label="AICG visual frame sequence"></canvas>
 </div>
 <div class="hero-copy px-6 md:px-10">
-<div>
+<div class="hero-main">
 <span class="hero-kicker">AICG VISUAL DIRECTOR</span>
 <h1 class="hero-title"><span>&#38472;&#35465;</span><span>CHENYU</span></h1><p class="hero-subtitle">GENERATIVE CINEMA LAB</p>
 </div>
@@ -371,11 +434,11 @@
 </div>
 </div>
 </div>
-<div class="hero-scroll-hint">Scroll to play</div>
+
 </div>
 </section>
 <div class="px-6 md:px-10 max-w-[1440px] mx-auto">
-<section class="space-y-12 animate-fade-in delay-200">
+<section class="core-section space-y-12 animate-fade-in delay-200">
 <div class="flex flex-col md:flex-row justify-between items-end gap-4 border-b border-outline-variant/10 pb-10">
 <div class="space-y-2">
 <h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tight" style="">核心优势</h2>
@@ -484,7 +547,135 @@
 </div>
 </div>
 </section>
-<section class="mt-32 max-w-3xl mx-auto space-y-4">
+<section id="experience" class="experience-section mt-[10.67rem] relative">
+<!-- Experience Header -->
+<header class="mb-24 relative fade-up delay-1">
+<div class="experience-glow absolute -top-28 -left-28 w-[30rem] h-[30rem] rounded-full pointer-events-none"></div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-6" style="">
+                PRO<span class="text-secondary italic" style="">/</span>FILE
+            </h1>
+<p class="font-body text-on-surface-variant text-lg max-w-2xl leading-relaxed fade-up delay-2" style="">记录从影视制作走向AIGC的探索之路。以镜头语言为骨骼，以算法生成为血肉，在物理法则与像素之间寻找新的视觉可能。</p>
+</header>
+<!-- Timeline Section -->
+<section class="relative">
+<!-- Central Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] timeline-line -translate-x-1/2 opacity-30"></div>
+<div class="space-y-32 relative">
+<!-- Entry 1: Current Experience -->
+<div class="relative flex flex-col md:flex-row items-start md:items-start timeline-item-1">
+<div class="hidden md:block w-1/2 pr-20 text-right pt-1 content-left">
+<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.09 — 2025.12</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">皇亚铝业科技有限公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AI设计师、AIGC制作</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary rounded-full glow-dot z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pl-12 md:pl-20 content-right">
+<div class="md:hidden mb-6">
+<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.09 — 2025.12</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">皇亚铝业科技有限公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AI设计师、AIGC制作</p>
+</div>
+<div class="max-w-xl">
+<ul class="space-y-2 text-on-surface-variant border-l border-outline-variant/30 pl-6">
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">1、综合运用文本、图像、视觉等多类型AI制作电商海报、漫剧及精品广告片，独立完成从创意构思、素材生成到后期剪辑调色的全流程交付。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">2、搭建标准化可复用的AIGC工作流，内容产出效率提升3倍以上。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">3、对接客户需求并输出AI视觉方案，协调设计与后期流程，保障项目按期交付。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">4、执行公司项目，从具体的内容构思、执行制作及后期精剪，独立完成制作。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">5、系统化管理公司的图片、视频资料库，确保素材的及时更新与高效调用。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">6、建立并整理内部AIGC教程库，定期发布AI前沿动态周报，辅助团队同步最新技术。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Entry 2: Past Work -->
+<div class="relative flex flex-col md:flex-row-reverse items-start md:items-start timeline-item-2">
+<div class="hidden md:block w-1/2 pl-20 text-left pt-1 content-right">
+<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.05 — 2025.09</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">芒芒喵影视传媒有限责任公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AI设计师、剧本策划</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-tertiary rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pr-0 md:pr-20 pl-12 md:pl-0 text-left md:text-right content-left">
+<div class="md:hidden mb-6">
+<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.05 — 2025.09</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">芒芒喵影视传媒有限责任公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AI设计师、剧本策划</p>
+</div>
+<div class="max-w-xl ml-auto">
+<ul class="space-y-2 text-on-surface-variant border-r-0 md:border-r border-outline-variant/30 pr-0 md:pr-6">
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">1、运用AIGC工具(即梦、Stable Diffusion、wan)制作电商海报、真人短剧海报、商业IP、漫剧等多品类AI视觉素材制作，积累从提示词控制到风格统一的全流程经验。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">2、负责叙事性短视频的脚本创作，涵盖创意构思、故事构建至分镜头设计。</span>
+</li>
+<li class="relative" style="">
+<span class="text-sm leading-relaxed block" style="">3、独立完成视频的现场拍摄、后期剪辑与调色工作，确保成片的质量和风格上满足导演要求。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Entry 3: Projects -->
+<div class="relative flex flex-col md:flex-row items-start md:items-start timeline-item-3">
+<div class="hidden md:block w-1/2 pr-20 text-right pt-1 content-left">
+<span class="font-headline text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2024.08 — 2025.05</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">短剧拍摄</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">摄像师、摄像助理</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-primary rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pl-12 md:pl-20 content-right">
+<div class="md:hidden mb-6">
+<span class="font-headline text-primary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2024.08 — 2025.05</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">短剧拍摄</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">摄像师、摄像助理</p>
+</div>
+<div class="max-w-xl">
+<div class="space-y-4 text-on-surface-variant border-l border-outline-variant/30 pl-6">
+<p class="text-sm leading-relaxed" style="">参与多部真人短剧拍摄，担任摄像师（B、C机、摄像助理）。负责摄像、设计镜头与构图、指导演员与现场调度等。</p>
+<p class="text-sm leading-relaxed italic opacity-80" style="">曾参与《离婚后大佬妈咪在线打脸》、《一吻定情》、《闪婚后夫人她运气爆棚》、《傩仙归来》、《十年明月》等多部短剧拍摄。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Entry 4: Graduation -->
+<div class="relative flex flex-col md:flex-row-reverse items-start md:items-start timeline-item-4">
+<div class="hidden md:block w-1/2 pl-20 text-left pt-1 content-right">
+<span class="font-headline text-outline text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2020.09 — 2024.06</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">广州美术学院</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">影视摄影与制作</p>
+</div>
+<div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-outline rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
+<div class="w-full md:w-1/2 pr-0 md:pr-20 pl-12 md:pl-0 text-left md:text-right content-left">
+<div class="md:hidden mb-6">
+<span class="font-headline text-outline text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2020.09 — 2024.06</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">广州美术学院</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">影视摄影与制作</p>
+</div>
+<div class="max-w-xl ml-auto">
+<div class="font-body text-on-surface-variant leading-relaxed text-sm space-y-4 border-r-0 md:border-r border-outline-variant/30 pr-0 md:pr-6">
+<p class="" style="">专业优势：熟练掌握镜头语言、光影设计与叙事；具有深厚的视觉审美与构图基本功：从前期制作到后期合成，全流程制作经验。</p>
+<p class="font-headline font-semibold text-on-surface tracking-wide" style="">曾获奖项：毕业设计《啮合》入选英国Lift Off升空电影节。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="mt-48 max-w-6xl mx-auto space-y-4">
 <div class="flex justify-between items-center text-[10px] font-headline tracking-widest text-zinc-500 uppercase">
 <span class="" style="">System Initializing...</span>
 <span class="" style="">Generating Creativity 88%</span>
@@ -523,7 +714,7 @@
 
     const heroSection = document.getElementById('hero-scroll');
     const heroCanvas = document.getElementById('hero-scroll-canvas');
-    const frameSources = ["frames/hero-frame-000.jpg","frames/hero-frame-001.jpg","frames/hero-frame-002.jpg","frames/hero-frame-003.jpg","frames/hero-frame-004.jpg","frames/hero-frame-005.jpg","frames/hero-frame-006.jpg","frames/hero-frame-007.jpg","frames/hero-frame-008.jpg","frames/hero-frame-009.jpg","frames/hero-frame-010.jpg","frames/hero-frame-011.jpg","frames/hero-frame-012.jpg","frames/hero-frame-013.jpg","frames/hero-frame-014.jpg","frames/hero-frame-015.jpg","frames/hero-frame-016.jpg","frames/hero-frame-017.jpg","frames/hero-frame-018.jpg","frames/hero-frame-019.jpg","frames/hero-frame-020.jpg","frames/hero-frame-021.jpg","frames/hero-frame-022.jpg","frames/hero-frame-023.jpg","frames/hero-frame-024.jpg","frames/hero-frame-025.jpg","frames/hero-frame-026.jpg","frames/hero-frame-027.jpg","frames/hero-frame-028.jpg","frames/hero-frame-029.jpg","frames/hero-frame-030.jpg","frames/hero-frame-031.jpg","frames/hero-frame-032.jpg","frames/hero-frame-033.jpg","frames/hero-frame-034.jpg","frames/hero-frame-035.jpg","frames/hero-frame-036.jpg","frames/hero-frame-037.jpg","frames/hero-frame-038.jpg","frames/hero-frame-039.jpg","frames/hero-frame-040.jpg","frames/hero-frame-041.jpg","frames/hero-frame-042.jpg","frames/hero-frame-043.jpg","frames/hero-frame-044.jpg","frames/hero-frame-045.jpg","frames/hero-frame-046.jpg","frames/hero-frame-047.jpg","frames/hero-frame-048.jpg","frames/hero-frame-049.jpg","frames/hero-frame-050.jpg","frames/hero-frame-051.jpg","frames/hero-frame-052.jpg","frames/hero-frame-053.jpg","frames/hero-frame-054.jpg","frames/hero-frame-055.jpg","frames/hero-frame-056.jpg"];
+    const frameSources = ["frames/hero-frame-000.jpg","frames/hero-frame-001.jpg","frames/hero-frame-002.jpg","frames/hero-frame-003.jpg","frames/hero-frame-004.jpg","frames/hero-frame-005.jpg","frames/hero-frame-006.jpg","frames/hero-frame-007.jpg","frames/hero-frame-008.jpg","frames/hero-frame-009.jpg","frames/hero-frame-010.jpg","frames/hero-frame-011.jpg","frames/hero-frame-012.jpg","frames/hero-frame-013.jpg","frames/hero-frame-014.jpg","frames/hero-frame-015.jpg","frames/hero-frame-016.jpg","frames/hero-frame-017.jpg","frames/hero-frame-018.jpg","frames/hero-frame-019.jpg","frames/hero-frame-020.jpg","frames/hero-frame-021.jpg","frames/hero-frame-022.jpg","frames/hero-frame-023.jpg","frames/hero-frame-024.jpg","frames/hero-frame-025.jpg","frames/hero-frame-026.jpg","frames/hero-frame-027.jpg","frames/hero-frame-028.jpg","frames/hero-frame-029.jpg","frames/hero-frame-030.jpg","frames/hero-frame-031.jpg","frames/hero-frame-032.jpg","frames/hero-frame-033.jpg","frames/hero-frame-034.jpg","frames/hero-frame-035.jpg","frames/hero-frame-036.jpg","frames/hero-frame-037.jpg","frames/hero-frame-038.jpg","frames/hero-frame-039.jpg","frames/hero-frame-040.jpg","frames/hero-frame-041.jpg","frames/hero-frame-042.jpg","frames/hero-frame-043.jpg","frames/hero-frame-044.jpg","frames/hero-frame-045.jpg","frames/hero-frame-046.jpg","frames/hero-frame-047.jpg"];
 
     if (heroSection && heroCanvas && frameSources.length) {
         const context = heroCanvas.getContext('2d');
