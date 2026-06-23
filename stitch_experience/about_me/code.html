@@ -367,7 +367,29 @@
         .timeline-item-2 > div { animation-delay: 1.8s; }
         .timeline-item-3 > div { animation-delay: 2.1s; }
         .timeline-item-4 > div { animation-delay: 2.4s; }
-        @keyframes fadeIn {
+                .experience-section:not(.experience-visible) .timeline-line,
+        .experience-section:not(.experience-visible) .dot-scale,
+        .experience-section:not(.experience-visible) .fade-up,
+        .experience-section:not(.experience-visible) .content-right,
+        .experience-section:not(.experience-visible) .content-left {
+            animation: none;
+        }
+        .experience-section:not(.experience-visible) .timeline-line {
+            transform: scaleY(0);
+        }
+        .experience-section:not(.experience-visible) .dot-scale {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+        .experience-section:not(.experience-visible) .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .experience-section:not(.experience-visible) .content-right,
+        .experience-section:not(.experience-visible) .content-left {
+            opacity: 0;
+        }
+@keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -712,6 +734,31 @@
         });
     }
 
+
+    const experienceSection = document.getElementById('experience');
+    if (experienceSection) {
+        const revealExperience = () => {
+            if (experienceSection.classList.contains('experience-visible')) return;
+            experienceSection.classList.remove('experience-visible');
+            void experienceSection.offsetWidth;
+            experienceSection.classList.add('experience-visible');
+        };
+        const resetExperience = () => experienceSection.classList.remove('experience-visible');
+        if ('IntersectionObserver' in window) {
+            const experienceObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        revealExperience();
+                    } else if (entry.boundingClientRect.bottom < 0 || entry.boundingClientRect.top > window.innerHeight) {
+                        resetExperience();
+                    }
+                });
+            }, { threshold: 0.01, rootMargin: '0px' });
+            experienceObserver.observe(experienceSection);
+        } else {
+            revealExperience();
+        }
+    }
     const heroSection = document.getElementById('hero-scroll');
     const heroCanvas = document.getElementById('hero-scroll-canvas');
     const frameSources = ["frames/hero-frame-000.jpg","frames/hero-frame-001.jpg","frames/hero-frame-002.jpg","frames/hero-frame-003.jpg","frames/hero-frame-004.jpg","frames/hero-frame-005.jpg","frames/hero-frame-006.jpg","frames/hero-frame-007.jpg","frames/hero-frame-008.jpg","frames/hero-frame-009.jpg","frames/hero-frame-010.jpg","frames/hero-frame-011.jpg","frames/hero-frame-012.jpg","frames/hero-frame-013.jpg","frames/hero-frame-014.jpg","frames/hero-frame-015.jpg","frames/hero-frame-016.jpg","frames/hero-frame-017.jpg","frames/hero-frame-018.jpg","frames/hero-frame-019.jpg","frames/hero-frame-020.jpg","frames/hero-frame-021.jpg","frames/hero-frame-022.jpg","frames/hero-frame-023.jpg","frames/hero-frame-024.jpg","frames/hero-frame-025.jpg","frames/hero-frame-026.jpg","frames/hero-frame-027.jpg","frames/hero-frame-028.jpg","frames/hero-frame-029.jpg","frames/hero-frame-030.jpg","frames/hero-frame-031.jpg","frames/hero-frame-032.jpg","frames/hero-frame-033.jpg","frames/hero-frame-034.jpg","frames/hero-frame-035.jpg","frames/hero-frame-036.jpg","frames/hero-frame-037.jpg","frames/hero-frame-038.jpg","frames/hero-frame-039.jpg","frames/hero-frame-040.jpg","frames/hero-frame-041.jpg","frames/hero-frame-042.jpg","frames/hero-frame-043.jpg","frames/hero-frame-044.jpg","frames/hero-frame-045.jpg","frames/hero-frame-046.jpg","frames/hero-frame-047.jpg"];
