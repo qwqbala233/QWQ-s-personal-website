@@ -102,7 +102,7 @@
         }
         .hero-scroll {
             position: relative;
-            min-height: 900vh;
+            min-height: 100svh;
             margin-bottom: 7rem;
         }
         .hero-stage {
@@ -281,7 +281,7 @@
             to { background-position: 72px 72px, 72px 72px; }
         }
 @media (max-width: 900px) {
-            .hero-scroll { min-height: 820vh; }
+            .hero-scroll { min-height: 100svh; }
             .hero-stage { padding-top: 6.5rem; align-items: end; }
             .hero-video-shell {
                 width: 100%;
@@ -586,24 +586,24 @@
 <!-- Entry 1: Current Experience -->
 <div class="relative flex flex-col md:flex-row items-start md:items-start timeline-item-1">
 <div class="hidden md:block w-1/2 pr-20 text-right pt-1 content-left">
-<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.09 — 2025.12</span>
-<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">皇亚铝业科技有限公司</h3>
-<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AI设计师、AIGC制作</p>
+<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2026.02 — 2026.10</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">广州领康科技有限公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AIGC设计师</p>
 </div>
 <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary rounded-full glow-dot z-10 border-2 border-surface top-3 dot-scale"></div>
 <div class="w-full md:w-1/2 pl-12 md:pl-20 content-right">
 <div class="md:hidden mb-6">
-<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.09 — 2025.12</span>
-<h3 class="font-headline text-3xl font-bold text-on-surface" style="">皇亚铝业科技有限公司</h3>
-<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AI设计师、AIGC制作</p>
+<span class="font-headline text-secondary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2026.02 — 2026.10</span>
+<h3 class="font-headline text-3xl font-bold text-on-surface" style="">广州领康科技有限公司</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AIGC设计师</p>
 </div>
 <div class="max-w-xl">
 <ul class="space-y-2 text-on-surface-variant border-l border-outline-variant/30 pl-6">
 <li class="relative" style="">
-<span class="text-sm leading-relaxed block" style="">1、综合运用文本、图像、视觉等多类型AI制作电商海报、漫剧及精品广告片，独立完成从创意构思、素材生成到后期剪辑调色的全流程交付。</span>
+<span class="text-sm leading-relaxed block" style="">1、综合运用文本、图像、视频等多种AI制作电商主图视频以及AI短片，独立完成从创意构思、素材生成到后期剪辑调色的全流程交付。</span>
 </li>
 <li class="relative" style="">
-<span class="text-sm leading-relaxed block" style="">2、搭建标准化可复用的AIGC工作流，内容产出效率提升3倍以上。</span>
+<span class="text-sm leading-relaxed block" style="">2、搭建标准化可复用的AIGC工作流，内容产出效率提升2倍以上。</span>
 </li>
 <li class="relative" style="">
 <span class="text-sm leading-relaxed block" style="">3、对接客户需求并输出AI视觉方案，协调设计与后期流程，保障项目按期交付。</span>
@@ -624,14 +624,14 @@
 <!-- Entry 2: Past Work -->
 <div class="relative flex flex-col md:flex-row-reverse items-start md:items-start timeline-item-2">
 <div class="hidden md:block w-1/2 pl-20 text-left pt-1 content-right">
-<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.05 — 2025.09</span>
+<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-3 block" style="">2025.06 — 2025.12</span>
 <h3 class="font-headline text-3xl font-bold text-on-surface mb-2" style="">芒芒喵影视传媒有限责任公司</h3>
 <p class="text-on-surface-variant text-sm font-medium tracking-wide" style="">AI设计师、剧本策划</p>
 </div>
 <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-tertiary rounded-full z-10 border-2 border-surface top-3 dot-scale"></div>
 <div class="w-full md:w-1/2 pr-0 md:pr-20 pl-12 md:pl-0 text-left md:text-right content-left">
 <div class="md:hidden mb-6">
-<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.05 — 2025.09</span>
+<span class="font-headline text-tertiary text-sm font-bold tracking-[0.2em] uppercase mb-2 block" style="">2025.06 — 2025.12</span>
 <h3 class="font-headline text-3xl font-bold text-on-surface" style="">芒芒喵影视传媒有限责任公司</h3>
 <p class="text-on-surface-variant text-sm font-medium tracking-wide mt-1" style="">AI设计师、剧本策划</p>
 </div>
@@ -766,15 +766,39 @@
     if (heroSection && heroCanvas && frameSources.length) {
         const context = heroCanvas.getContext('2d');
         const frames = [];
+        const lastFrame = frameSources.length - 1;
+        const framesPerStep = 3;
+        const stepsBeforeAutoplay = 6;
+        const autoplayFrameDuration = 1000 / 24;
+        const wheelStepCooldown = 80;
         let loadedFrames = 0;
-        let currentFrame = -1;
-        let ticking = false;
+        let currentFrame = heroSection.getBoundingClientRect().bottom < window.innerHeight / 2 ? lastFrame : 0;
+        let renderedFrame = -1;
+        let interactionSteps = 0;
+        let lastDirection = 0;
+        let lastWheelTime = 0;
+        let playbackDirection = 0;
+        let queuedFrames = 0;
+        let autoplayToEnd = false;
+        let playbackRequest = 0;
+        let lastPlaybackTime = 0;
+        let playbackAccumulator = 0;
+        let touchStartY = null;
         let canvasWidth = 0;
         let canvasHeight = 0;
         const dprLimit = 2;
         const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-        window.__heroScrollDebug = { ready: false, frameCount: frameSources.length, loadedFrames: 0, progress: 0, frameIndex: 0, error: null };
+        window.__heroScrollDebug = {
+            ready: false,
+            frameCount: frameSources.length,
+            loadedFrames: 0,
+            progress: currentFrame / lastFrame,
+            frameIndex: currentFrame,
+            interactionSteps: 0,
+            autoplaying: false,
+            error: null
+        };
 
         const resizeCanvas = () => {
             const rect = heroCanvas.getBoundingClientRect();
@@ -786,7 +810,7 @@
             canvasHeight = height;
             heroCanvas.width = width;
             heroCanvas.height = height;
-            currentFrame = -1;
+            renderedFrame = -1;
         };
 
         const drawCover = (image) => {
@@ -815,45 +839,140 @@
             context.drawImage(image, drawX, drawY, drawWidth, drawHeight);
         };
 
-        const syncFrameToScroll = () => {
-            ticking = false;
-            if (!loadedFrames) return;
-
-            const rect = heroSection.getBoundingClientRect();
-            const scrollable = Math.max(1, heroSection.offsetHeight - window.innerHeight);
-            const progress = clamp(-rect.top / scrollable, 0, 1);
-            const frameIndex = clamp(Math.round(progress * (frameSources.length - 1)), 0, frameSources.length - 1);
-            const image = frames[frameIndex];
-
+        const updateDebugState = () => {
             window.__heroScrollDebug.ready = loadedFrames === frameSources.length;
             window.__heroScrollDebug.loadedFrames = loadedFrames;
-            window.__heroScrollDebug.progress = progress;
-            window.__heroScrollDebug.frameIndex = frameIndex;
+            window.__heroScrollDebug.progress = currentFrame / lastFrame;
+            window.__heroScrollDebug.frameIndex = currentFrame;
+            window.__heroScrollDebug.interactionSteps = interactionSteps;
+            window.__heroScrollDebug.autoplaying = autoplayToEnd;
             heroCanvas.dataset.loadedFrames = String(loadedFrames);
-            heroCanvas.dataset.frameIndex = String(frameIndex);
-            heroCanvas.dataset.progress = progress.toFixed(4);
-
-            if (!image || !image.complete) return;
-            if (frameIndex === currentFrame) return;
-
-            currentFrame = frameIndex;
-            drawCover(image);
+            heroCanvas.dataset.frameIndex = String(currentFrame);
+            heroCanvas.dataset.progress = (currentFrame / lastFrame).toFixed(4);
         };
 
-        const requestSync = () => {
-            if (!ticking) {
-                ticking = true;
-                requestAnimationFrame(syncFrameToScroll);
+        const renderFrame = (frameIndex) => {
+            currentFrame = clamp(frameIndex, 0, lastFrame);
+            const image = frames[currentFrame];
+            updateDebugState();
+
+            if (!image || !image.complete || !image.naturalWidth) return false;
+            if (currentFrame === renderedFrame) return true;
+
+            drawCover(image);
+            renderedFrame = currentFrame;
+            return true;
+        };
+
+        const heroIsAtPageTop = () => window.scrollY <= heroSection.offsetTop + 8;
+        const sequenceCanMove = (direction) => direction > 0 ? currentFrame < lastFrame : currentFrame > 0;
+
+        const finishPlayback = (resetInteractions = false) => {
+            playbackRequest = 0;
+            lastPlaybackTime = 0;
+            playbackAccumulator = 0;
+            queuedFrames = 0;
+            playbackDirection = 0;
+
+            if (resetInteractions) {
+                autoplayToEnd = false;
+                interactionSteps = 0;
+                lastDirection = 0;
             }
+
+            updateDebugState();
+        };
+
+        const runFramePlayback = (timestamp) => {
+            if (!lastPlaybackTime) {
+                lastPlaybackTime = timestamp;
+            } else {
+                playbackAccumulator += timestamp - lastPlaybackTime;
+                lastPlaybackTime = timestamp;
+            }
+
+            if (playbackAccumulator >= autoplayFrameDuration) {
+                const nextFrame = currentFrame + playbackDirection;
+                const nextImage = frames[nextFrame];
+
+                if (nextImage && nextImage.complete && nextImage.naturalWidth) {
+                    renderFrame(nextFrame);
+                    if (queuedFrames > 0) queuedFrames -= 1;
+                    playbackAccumulator -= autoplayFrameDuration;
+                }
+            }
+
+            if (!sequenceCanMove(playbackDirection)) {
+                finishPlayback(true);
+                return;
+            }
+
+            if (queuedFrames <= 0 && !autoplayToEnd) {
+                finishPlayback(false);
+                return;
+            }
+
+            playbackRequest = requestAnimationFrame(runFramePlayback);
+        };
+
+        const startFramePlayback = () => {
+            if (playbackRequest || (!queuedFrames && !autoplayToEnd)) return;
+            playbackRequest = requestAnimationFrame(runFramePlayback);
+        };
+
+        const advanceByInteraction = (direction) => {
+            if (!direction || autoplayToEnd || !heroIsAtPageTop() || !sequenceCanMove(direction)) return false;
+
+            if (direction !== lastDirection) {
+                interactionSteps = 0;
+                queuedFrames = 0;
+                lastPlaybackTime = 0;
+                playbackAccumulator = 0;
+                lastDirection = direction;
+            }
+
+            playbackDirection = direction;
+            interactionSteps += 1;
+            queuedFrames += framesPerStep;
+
+            if (interactionSteps >= stepsBeforeAutoplay) {
+                autoplayToEnd = true;
+            }
+
+            updateDebugState();
+            startFramePlayback();
+            return true;
+        };
+
+        const handleWheel = (event) => {
+            const direction = Math.sign(event.deltaY);
+            if (!direction || !heroIsAtPageTop()) return;
+
+            if (autoplayToEnd) {
+                event.preventDefault();
+                return;
+            }
+
+            if (!sequenceCanMove(direction)) return;
+            event.preventDefault();
+
+            const now = performance.now();
+            if (direction === lastDirection && now - lastWheelTime < wheelStepCooldown) return;
+            lastWheelTime = now;
+            advanceByInteraction(direction);
         };
 
         frameSources.forEach((src, index) => {
             const image = new Image();
             frames[index] = image;
+            image.decoding = 'async';
+            if (index === currentFrame) image.fetchPriority = 'high';
             image.onload = () => {
                 loadedFrames += 1;
-                heroCanvas.dataset.loadedFrames = String(loadedFrames);
-                if (index === 0 || loadedFrames === frameSources.length) requestSync();
+                updateDebugState();
+                if (index === currentFrame || (loadedFrames === frameSources.length && renderedFrame < 0)) {
+                    renderFrame(currentFrame);
+                }
             };
             image.onerror = () => {
                 window.__heroScrollDebug.error = 'Failed to load ' + src;
@@ -861,12 +980,26 @@
             image.src = src;
         });
 
-        window.addEventListener('scroll', requestSync, { passive: true });
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        heroSection.addEventListener('touchstart', (event) => {
+            if (event.touches.length === 1) touchStartY = event.touches[0].clientY;
+        }, { passive: true });
+        heroSection.addEventListener('touchmove', (event) => {
+            if (touchStartY === null || event.touches.length !== 1 || !heroIsAtPageTop()) return;
+            const direction = Math.sign(touchStartY - event.touches[0].clientY);
+            if (autoplayToEnd || sequenceCanMove(direction)) event.preventDefault();
+        }, { passive: false });
+        heroSection.addEventListener('touchend', (event) => {
+            if (touchStartY === null || !event.changedTouches.length) return;
+            const distance = touchStartY - event.changedTouches[0].clientY;
+            touchStartY = null;
+            if (Math.abs(distance) >= 30) advanceByInteraction(Math.sign(distance));
+        }, { passive: true });
         window.addEventListener('resize', () => {
-            currentFrame = -1;
-            requestSync();
+            renderedFrame = -1;
+            renderFrame(currentFrame);
         });
-        requestSync();
+        renderFrame(currentFrame);
     }
 </script>
 </body></html>
